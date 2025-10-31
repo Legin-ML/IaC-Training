@@ -6,7 +6,7 @@ resource "aws_security_group" "webserver-sg" {
 
 resource "aws_vpc_security_group_ingress_rule" "allow_http" {
   security_group_id = aws_security_group.webserver-sg.id
-  cidr_ipv4         = var.allowed_cidr
+  referenced_security_group_id = aws_security_group.alb-sg.id
   from_port         = 80
   ip_protocol       = "tcp"
   to_port           = 80
